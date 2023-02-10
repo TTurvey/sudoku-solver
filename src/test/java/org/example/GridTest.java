@@ -24,6 +24,17 @@ public class GridTest {
         assertEquals(9, grid_SuperEasy.getSize());
     }
 
+    @Test
+    public void should_throw_NullPointerException_if_null_input(){
+        assertThrows(NullPointerException.class, ()->{new Grid(null);});
+    }
+
+    @Test
+    public void should_throw_IllegalArgumentException_if_input_array_is_not_size_9x9(){
+        int[][] arr = {{1},{2}};
+        assertThrows(IllegalArgumentException.class, ()->{new Grid(arr);});
+    }
+
 
     public int[][] read(String src) throws IOException {
         int[][] inputArray = new int[9][9];

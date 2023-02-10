@@ -5,10 +5,18 @@ public class Grid {
     private final int[][] squares;
 
     public Grid(int[][] input) {
+        if (input == null) {
+            throw new NullPointerException();
+        }
+        if (input.length != 9) {
+            throw new IllegalArgumentException
+                    ("input array must be 9x9");
+        }
         this.squares = input;
     }
 
     public int getSize() {
         return squares.length;
     }
+
 }
