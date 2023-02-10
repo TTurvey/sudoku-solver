@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 import java.io.BufferedReader;
@@ -29,12 +31,12 @@ public class GridTest {
         assertThrows(NullPointerException.class, ()->{new Grid(null);});
     }
 
-    @Test
-    public void should_throw_IllegalArgumentException_if_input_array_is_not_size_9x9(){
-        int[][] arr = {{1},{2}};
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 10})
+    public void should_throw_IllegalArgumentException_if_input_array_is_not_size_9x9(int i) throws Exception{
+        int[][] arr = new int[i][i];
         assertThrows(IllegalArgumentException.class, ()->{new Grid(arr);});
     }
-
 
     public int[][] read(String src) throws IOException {
         int[][] inputArray = new int[9][9];
