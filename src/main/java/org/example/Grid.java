@@ -1,13 +1,11 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class Grid {
 
-    private int[][] squares;
+    private final int[][] squares;
 
-    public Grid() {
-        this.squares = new int[9][9];
+    public Grid(int[][] input) {
+        this.squares = input;
     }
 
     public int getSize() {
