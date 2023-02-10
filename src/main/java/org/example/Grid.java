@@ -19,4 +19,13 @@ public class Grid {
         return squares.length;
     }
 
+    public boolean isInRow(int row, int number){
+        for(int i = 0; i < getSize(); i++){
+            if(squares[row][i] == number){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

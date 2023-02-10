@@ -1,10 +1,10 @@
 package org.example;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ public class GridTest {
 
     private Grid grid_SuperEasy;
 
-    @Before
+    @BeforeEach
     public void init() throws IOException {
         this.grid_SuperEasy = new Grid(read("src/test/java/input-SuperEasy.txt"));
     }
@@ -28,14 +28,28 @@ public class GridTest {
 
     @Test
     public void should_throw_NullPointerException_if_null_input(){
-        assertThrows(NullPointerException.class, ()->{new Grid(null);});
+        assertThrows(NullPointerException.class, ()-> new Grid(null));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 10})
-    public void should_throw_IllegalArgumentException_if_input_array_is_not_size_9x9(int i) throws Exception{
+    public void should_throw_IllegalArgumentException_if_input_array_is_not_size_9x9(int i) {
         int[][] arr = new int[i][i];
-        assertThrows(IllegalArgumentException.class, ()->{new Grid(arr);});
+        assertThrows(IllegalArgumentException.class, ()-> new Grid(arr));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, 1", "1, 2", "2, 4", "3, 5", "4, 3", "5, 6", "6, 1", "7, 9", "8, 7", "8, 8"})
+    public void should_return_true_if_number_is_in_row_already(int row, int number) {
+        System.out.println(grid_SuperEasy);
+        assertTrue(grid_SuperEasy.isInRow(row, number));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, 8", "1, 8", "2, 2", "3, 8", "4, 8", "5, 8", "6, 8", "7, 8", "8, 2", "8, 2"})
+    public void should_return_false_if_number_is_not_in_row_already(int row, int number) {
+        System.out.println(grid_SuperEasy);
+        assertFalse(grid_SuperEasy.isInRow(row, number));
     }
 
     public int[][] read(String src) throws IOException {
