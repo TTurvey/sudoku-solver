@@ -44,7 +44,7 @@ public class Grid {
 
 //        iterate through the 3x3 box from the lowest index to index+3
         for(int i = r; i < r + 3; i++){
-            for(int j = c; i < c + 3; j++){
+            for(int j = c; j < c + 3; j++){
                 if(squares[i][j] == number){
                     return true;
                 }

@@ -62,9 +62,20 @@ public class GridTest {
         assertFalse(grid_SuperEasy.isInColumn(column, number));
     }
 
-    @Test
-    public void should_return_true_if_number_is_in_3x3_box_already() {
-        assertTrue(grid_SuperEasy.isInBox(2,0, 1));
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0, 1",
+            "0, 3, 2",
+            "4, 1, 3",
+            "0, 6, 4",
+            "4, 3, 5",
+            "4, 7, 9",
+            "7, 0, 7",
+            "8, 3, 6",
+            "8, 8, 8"
+    })
+    public void should_return_true_if_number_is_in_3x3_box_already(int row, int column, int number) {
+        assertTrue(grid_SuperEasy.isInBox(row,column, number));
     }
 
     public int[][] read(String src) throws IOException {
