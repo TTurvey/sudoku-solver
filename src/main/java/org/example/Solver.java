@@ -2,7 +2,7 @@ package org.example;
 
 public class Solver {
 
-    public boolean execute(Grid grid){
+    public static boolean execute(Grid grid){
         int size = grid.getSize();
         int[][] squares = grid.getSquares();
 

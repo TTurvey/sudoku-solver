@@ -6,8 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +16,8 @@ public class GridTest {
 
     @BeforeEach
     public void init() throws IOException {
-        this.grid_SuperEasy = new Grid(read("src/test/java/input-SuperEasy.txt"));
+        int[][] input_SuperEasy = Read2DArrayFromFile.read("src/test/java/input-SuperEasy.txt");
+        this.grid_SuperEasy = new Grid(input_SuperEasy);
     }
 
     @Test
@@ -118,19 +117,6 @@ public class GridTest {
         int[][] squares =grid_SuperEasy.getSquares();
 
         assertEquals(9, squares[1][1]);
-    }
-
-    public int[][] read(String src) throws IOException {
-        int[][] inputArray = new int[9][9];
-        BufferedReader br = new BufferedReader(new FileReader(src));
-
-        for (int i = 0; i < 9; i++) {
-            String[] st = br.readLine().trim().split(" ");
-            for (int j = 0; j < 9; j++) {
-                inputArray[i][j] = Integer.parseInt(st[j]);
-            }
-        }
-        return inputArray;
     }
 
 }
