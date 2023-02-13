@@ -111,6 +111,15 @@ public class GridTest {
         assertTrue(grid_SuperEasy.checkIfPossible(row,column, number));
     }
 
+    @Test
+    public void
+    should_insert_number_into_stated_index(){
+        grid_SuperEasy.putNumber(1,1,9);
+        int[][] squares =grid_SuperEasy.getSquares();
+
+        assertEquals(9, squares[1][1]);
+    }
+
     public int[][] read(String src) throws IOException {
         int[][] inputArray = new int[9][9];
         BufferedReader br = new BufferedReader(new FileReader(src));

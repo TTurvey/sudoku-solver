@@ -58,4 +58,13 @@ public class Grid {
                 && !isInRow(row, number)
                 && !isInColumn(column, number);
     }
+
+    public void putNumber(int row, int column, int number){
+        squares[row][column] = number;
+    }
+
+    public int[][] getSquares(){
+        return squares;
+    }
+
 }
