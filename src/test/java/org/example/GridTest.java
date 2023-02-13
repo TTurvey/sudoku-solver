@@ -52,6 +52,13 @@ public class GridTest {
         assertFalse(grid_SuperEasy.isInRow(row, number));
     }
 
+    @ParameterizedTest
+    @CsvSource({"0, 1", "1, 2", "2, 3", "3, 4", "4, 5", "5, 9", "6, 6", "7, 8", "8, 7"})
+    public void should_return_true_if_number_is_in_column_already(int column, int number) {
+        System.out.println(grid_SuperEasy);
+        assertTrue(grid_SuperEasy.isInColumn(column, number));
+    }
+
     public int[][] read(String src) throws IOException {
         int[][] inputArray = new int[9][9];
         BufferedReader br = new BufferedReader(new FileReader(src));

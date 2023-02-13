@@ -28,4 +28,13 @@ public class Grid {
         return false;
     }
 
+    public boolean isInColumn(int column, int number){
+        for(int i = 0; i < getSize(); i++){
+            if(squares[i][column] == number){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
