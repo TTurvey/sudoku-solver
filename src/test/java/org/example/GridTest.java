@@ -78,6 +78,22 @@ public class GridTest {
         assertTrue(grid_SuperEasy.isInBox(row,column, number));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0, 9",
+            "0, 3, 3",
+            "0, 6, 2",
+            "4, 1, 1",
+            "4, 3, 6",
+            "4, 7, 7",
+            "7, 0, 8",
+            "8, 3, 4",
+            "8, 8, 5"
+    })
+    public void should_return_false_if_number_is_not_in_3x3_box_already(int row, int column, int number) {
+        assertFalse(grid_SuperEasy.isInBox(row,column, number));
+    }
+
     public int[][] read(String src) throws IOException {
         int[][] inputArray = new int[9][9];
         BufferedReader br = new BufferedReader(new FileReader(src));
