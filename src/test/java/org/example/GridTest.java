@@ -41,22 +41,30 @@ public class GridTest {
     @ParameterizedTest
     @CsvSource({"0, 1", "1, 2", "2, 4", "3, 5", "4, 3", "5, 6", "6, 1", "7, 9", "8, 7", "8, 8"})
     public void should_return_true_if_number_is_in_row_already(int row, int number) {
-        System.out.println(grid_SuperEasy);
         assertTrue(grid_SuperEasy.isInRow(row, number));
     }
 
     @ParameterizedTest
     @CsvSource({"0, 8", "1, 8", "2, 2", "3, 8", "4, 8", "5, 8", "6, 8", "7, 8", "8, 2", "8, 2"})
     public void should_return_false_if_number_is_not_in_row_already(int row, int number) {
-        System.out.println(grid_SuperEasy);
         assertFalse(grid_SuperEasy.isInRow(row, number));
     }
 
     @ParameterizedTest
     @CsvSource({"0, 1", "1, 2", "2, 3", "3, 4", "4, 5", "5, 9", "6, 6", "7, 8", "8, 7"})
     public void should_return_true_if_number_is_in_column_already(int column, int number) {
-        System.out.println(grid_SuperEasy);
         assertTrue(grid_SuperEasy.isInColumn(column, number));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, 2", "1, 9", "2, 1", "3, 8", "4, 7", "5, 6", "6, 5", "7, 4", "8, 3"})
+    public void should_return_false_if_number_is_not_in_column_already(int column, int number) {
+        assertFalse(grid_SuperEasy.isInColumn(column, number));
+    }
+
+    @Test
+    public void should_return_true_if_number_is_in_3x3_box_already() {
+        assertTrue(grid_SuperEasy.isInBox(2,0, 1));
     }
 
     public int[][] read(String src) throws IOException {

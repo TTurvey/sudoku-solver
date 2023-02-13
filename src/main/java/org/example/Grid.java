@@ -37,4 +37,20 @@ public class Grid {
         return false;
     }
 
+    public boolean isInBox(int row, int column, int number) {
+//        get the lowest index in the box ...0, 3 or 6.
+        int r = row - row % 3;
+        int c = column - column % 3;
+
+//        iterate through the 3x3 box from the lowest index to index+3
+        for(int i = r; i < r + 3; i++){
+            for(int j = c; i < c + 3; j++){
+                if(squares[i][j] == number){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
