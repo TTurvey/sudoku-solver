@@ -53,4 +53,9 @@ public class Grid {
         return false;
     }
 
+    public boolean checkIfPossible(int row, int column, int number){
+        return !isInBox(row, column, number)
+                && !isInRow(row, number)
+                && !isInColumn(column, number);
+    }
 }
